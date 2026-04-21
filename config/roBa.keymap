@@ -12,18 +12,18 @@
     automouse-layer = <4>;
     scroll-layers = <5>;
 
-     arrows {
-         layers = <3>;
-         bindings =
-             <&kp RIGHT_ARROW>,
-             <&kp LEFT_ARROW>,
-             <&kp UP_ARROW>,
-             <&kp DOWN_ARROW>;
+    arrows {
+        layers = <3>;
+        bindings =
+            <&kp RIGHT_ARROW>,
+            <&kp LEFT_ARROW>,
+            <&kp UP_ARROW>,
+            <&kp DOWN_ARROW>;
 
-         tick = <10>;
-         wait-ms = <5>;
-         tap-ms = <5>;
-     };
+        tick = <10>;
+        wait-ms = <5>;
+        tap-ms = <5>;
+    };
 };
 
 / {
@@ -73,29 +73,32 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-    	st: scroll_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Scroll / Tap";
-            bindings = <&mo>, <&kp>;
-    
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            hold-while-undecided;
+
+            st: scroll_tap {
+                compatible = "zmk,behavior-hold-tap";
+                label = "Scroll / Tap";
+                bindings = <&mo>, <&kp>;
+
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                flavor = "balanced";
+                hold-while-undecided;
             };
+        };
     };
 
-};
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R                        &kp T                                                          &kp Y        &kp U  &lt 5 I    &kp O    &kp P
-&kp A             &kp S         &kp D         &kp F                        &kp G        &kp LS(LG(S))                      &kp MINUS      &kp H        &kp J  &kp K      &kp L    &kp SQT
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                        &kp B        &kp COLON                          &kp SEMICOLON  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 ENTER                             &kp DEL
+&kp Q             &kp W         &kp E         &kp R                       &kp T                                                       &kp Y        &kp U  &kp I      &kp O    &kp P
+&mt A LCTRL       &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))                   &kp MINUS      &kp H        &kp J  &kp K      &lt 5 L  &kp SQT
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                       &kp B        &kp COLON                       &kp SEMICOLON  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 6 LC(SPACE)  &lt 2 SPACE  &lt_to_layer_0 3 LG(SPACE)      &kp BACKSPACE  &lt 1 ENTER                             &kp TAB
             >;
+
+            sensor-bindings = <&inc_dec_kp C_AC_SCROLL_UP C_AC_SCROLL_DOWN>;
         };
 
         FUNCTION {
@@ -123,15 +126,13 @@
 &kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &trans          &trans                  &trans          &trans                   &trans   &trans      &trans  &trans                          &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &mkp MB3  &mkp MB2
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB5  &mkp MB3  &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB4  &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
             >;
         };
