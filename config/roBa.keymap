@@ -12,18 +12,18 @@
     automouse-layer = <4>;
     scroll-layers = <5>;
 
-    // arrows {
-    //     layers = <3>;
-    //     bindings =
-    //         <&kp RIGHT_ARROW>,
-    //         <&kp LEFT_ARROW>,
-    //         <&kp UP_ARROW>,
-    //         <&kp DOWN_ARROW>;
+     arrows {
+         layers = <3>;
+         bindings =
+             <&kp RIGHT_ARROW>,
+             <&kp LEFT_ARROW>,
+             <&kp UP_ARROW>,
+             <&kp DOWN_ARROW>;
 
-    //     tick = <10>;
-    //     wait-ms = <5>;
-    //     tap-ms = <5>;
-    // };
+         tick = <10>;
+         wait-ms = <5>;
+         tap-ms = <5>;
+     };
 };
 
 / {
@@ -73,9 +73,19 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-        };
+    	st: scroll_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Scroll / Tap";
+            bindings = <&mo>, <&kp>;
+    
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            hold-while-undecided;
+            };
     };
 
+};
     keymap {
         compatible = "zmk,keymap";
 
