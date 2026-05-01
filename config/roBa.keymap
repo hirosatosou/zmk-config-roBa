@@ -41,6 +41,21 @@
             bindings = <&kp LS(TAB)>;
             key-positions = <12 13>;
         };
+
+        cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <17 18>;
+        };
+
+        copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <18 19>;
+        };
+
+        paste {
+            bindings = <&kp LC(P)>;
+            key-positions = <19 20>;
+        };
     };
 
     macros {
